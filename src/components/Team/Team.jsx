@@ -11,40 +11,42 @@ import {
 import TeamPlayer from './TeamPlayer';
 
 const Team = ({ currentTeam }) => {
-    const goalkeeperPosition = [
-        'bottom-0 left-1/2 -translate-x-1/2',
-        '-bottom-24 left-0',
-    ];
-    const defenderPositions = [
-        'bottom-24 left-1/4 -translate-x-1/2',
-        'bottom-24 left-2/4 -translate-x-1/2',
-        'bottom-24 left-3/4 -translate-x-1/2',
-        '-bottom-24 left-1/3 -translate-x-1/3',
-        '-bottom-24 left-2/3 -translate-x-2/4',
-    ];
-    const midfielderPositions = [
-        'bottom-80 left-1/4 -translate-x-1/2',
-        'bottom-80 left-3/4 -translate-x-1/2',
-        'bottom-56 left-1/3 -translate-x-1/2',
-        'bottom-56 left-2/3 -translate-x-1/2',
-        '-bottom-24 right-0 translate-x-1/4',
-    ];
-    const forwardPositions = [
-        'top-10 left-1/4 -translate-x-1/2',
-        'top-10 left-2/4 -translate-x-1/2',
-        'top-10 left-3/4 -translate-x-1/2',
-    ];
+    const form343 = {
+        goalkeeperPosition: [
+            'bottom-0 left-1/2 -translate-x-1/2',
+            '-bottom-24 left-0',
+        ],
+        defenderPositions: [
+            'bottom-24 left-1/4 -translate-x-1/2',
+            'bottom-24 left-2/4 -translate-x-1/2',
+            'bottom-24 left-3/4 -translate-x-1/2',
+            '-bottom-24 left-1/3 -translate-x-1/3',
+            '-bottom-24 left-2/3 -translate-x-2/4',
+        ],
+        midfielderPositions: [
+            'bottom-80 left-1/4 -translate-x-1/2',
+            'bottom-80 left-3/4 -translate-x-1/2',
+            'bottom-56 left-1/3 -translate-x-1/2',
+            'bottom-56 left-2/3 -translate-x-1/2',
+            '-bottom-24 right-0 translate-x-1/4',
+        ],
+        forwardPositions: [
+            'top-10 left-1/4 -translate-x-1/2',
+            'top-10 left-2/4 -translate-x-1/2',
+            'top-10 left-3/4 -translate-x-1/2',
+        ],
+    };
 
     const getPosition = (type, i) => {
         switch (type) {
             case GK:
-                return goalkeeperPosition[i];
+                return form343.goalkeeperPosition[i];
             case DF:
-                return defenderPositions[i];
+                return form343.defenderPositions[i];
             case MF:
-                return midfielderPositions[i];
+                return form343.midfielderPositions[i];
             case FW:
-                return forwardPositions[i];
+                return form343.forwardPositions[i];
             default:
                 return {};
         }
@@ -64,8 +66,8 @@ const Team = ({ currentTeam }) => {
     );
 
     return (
-        <div className='w-96 relative mx-auto'>
-            <img className='' src='imgs/Football_field.png' alt='' />
+        <div className='relative mx-auto'>
+            <img className='mx-auto' src='imgs/Football_field.png' alt='' />
             {goalkeepers.map((player, i) => (
                 <TeamPlayer
                     player={player}

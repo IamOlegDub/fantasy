@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { removeUser } from '../../slices/userSlice';
 import Button from '../Button/Button';
 
-const LogOutButton = () => {
+const LogOutButton = ({ onCloseMenu }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -14,6 +14,7 @@ const LogOutButton = () => {
             })
         );
         navigate('/');
+        onCloseMenu(false);
     };
     return (
         <Button

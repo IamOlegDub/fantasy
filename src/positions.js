@@ -22,18 +22,34 @@ export const getShortPosName = (longPosName) => {
     if (longPosName === FW) {
         return 'FW';
     }
+    return longPosName;
 };
 export const getItemColor = (position) => {
     if (position === GK) {
-        return 'bg-' + GK_COLOR;
+        return 'bg-[#ffeaa7]';
     }
     if (position === DF) {
-        return 'bg-' + DF_COLOR;
+        return 'bg-[#74b9ff]';
     }
     if (position === MF) {
-        return 'bg-' + MF_COLOR;
+        return 'bg-[#55efc4]';
     }
     if (position === FW) {
-        return 'bg-' + FW_COLOR;
+        return 'bg-[#ff7675]';
+    }
+};
+
+export const getTextColor = (position) => {
+    if (position === GK) {
+        return 'text-[#ff9f43]';
+    }
+    if (position === DF) {
+        return 'text-[#2e86de]';
+    }
+    if (position === MF) {
+        return 'text-[#10ac84]';
+    }
+    if (position === FW) {
+        return 'text-[#ee5253]';
     }
 };

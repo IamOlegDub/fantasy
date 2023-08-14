@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const playersSlice = createSlice({
     name: 'players',
     initialState: {
+        fullTeams: [],
         allPlayers: [],
         selectedPlayers: [],
     },
@@ -23,7 +24,17 @@ const playersSlice = createSlice({
             );
         },
         setAllPlayers(state, action) {
-            state.allPlayers = action.payload;
+            const playersInTeams = action.payload;
+            const players = [];
+            playersInTeams.forEach((teamItem) => {
+                teamItem.players.forEach((player) => {
+                    player['team_badge'] = teamItem.team_badge;
+                    player['team_name'] = teamItem.team_name;
+                });
+                players.push(...teamItem.players);
+            });
+            state.allPlayers = players;
+            state.fullTeams = playersInTeams;
         },
     },
 });
