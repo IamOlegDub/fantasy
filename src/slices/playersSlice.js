@@ -25,25 +25,43 @@ const playersSlice = createSlice({
             const fw = state.selectedPlayers.filter(
                 (player) => player.player_type === 'Forwards'
             );
+            const teamNumber = state.selectedPlayers.filter(
+                (player) => player.team_name === playerToAdd.team_name
+            );
             if (!isPlayerAlreadySelected && state.selectedPlayers.length < 15) {
+                if (teamNumber.length > 2) {
+                    alert(
+                        'You already have 3 players from ' +
+                            playerToAdd.team_name
+                    );
+                    return;
+                }
                 if (
                     gk.length > 1 &&
                     playerToAdd.player_type === 'Goalkeepers'
                 ) {
+                    alert('Goalkeepers number is full');
                     return;
                 }
                 if (df.length > 4 && playerToAdd.player_type === 'Defenders') {
+                    alert('Defenders number is full');
+
                     return;
                 }
                 if (
                     mf.length > 4 &&
                     playerToAdd.player_type === 'Midfielders'
                 ) {
+                    alert('Midfielders number is full');
+
                     return;
                 }
                 if (fw.length > 2 && playerToAdd.player_type === 'Forwards') {
+                    alert('Forwards number is full');
+
                     return;
                 }
+
                 state.selectedPlayers.push(playerToAdd);
             }
         },
