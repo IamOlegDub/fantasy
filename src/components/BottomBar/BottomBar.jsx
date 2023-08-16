@@ -26,7 +26,7 @@ const BottomBar = () => {
                         Competitors
                     </Link>
                 </nav>
-                <div className='p-2 flex justify-end'>
+                <div className='p-2 pr-5 flex justify-end'>
                     <button onClick={() => setMobileMenuOpen(true)}>
                         <Bars3Icon className='h-6 w-6' aria-hidden='true' />
                     </button>

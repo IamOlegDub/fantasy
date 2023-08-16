@@ -13,11 +13,15 @@ function App() {
     const currentUser = useSelector((state) => state.user.user);
 
     return (
-        <div className='App overflow-hidden'>
+        <div className='App overflow-hidden bg-gradient-to-r from-[#6fcf48] to-[#94e9ad] min-h-screen'>
             <main className='p-3 lg:max-w-md mx-auto mb-10'>
                 <Routes>
                     <Route
                         path={'/'}
+                        element={currentUser ? <Cabinet /> : <Hero />}
+                    />
+                    <Route
+                        path={'/*'}
                         element={currentUser ? <Cabinet /> : <Hero />}
                     />
                     {currentUser && (
@@ -25,7 +29,6 @@ function App() {
                             <Route path={'/match'} element={<Match />} />
                             <Route path={'/list'} element={<List />} />
                             {/* <Route path={'/cabinet'} element={<Cabinet />} /> */}
-                            <Route path={'/*'} element={<Cabinet />} />
                         </>
                     )}
                 </Routes>

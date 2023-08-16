@@ -8,7 +8,7 @@ const ImageWithFallback = ({ src, fallbackSrc, alt, borderColor }) => {
 
     return (
         <img
-            className={`rounded-full z-10 active:w-20 active:absolute active:-top-2 active:left-20 ${borderColor}`}
+            className={`rounded-full z-10  ${borderColor}`}
             src={imageSrc}
             alt={alt}
             onError={onError}

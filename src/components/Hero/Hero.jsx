@@ -14,12 +14,12 @@ const Hero = () => {
         signInWithPopup(auth, googleAuthProvider)
             .then((data) => {
                 dispatch(setUser(data.user));
-                navigate('/cabinet');
+                navigate('/');
             })
             .catch((error) => console.error(error));
     };
     return (
-        <div className='bg-white'>
+        <div className=''>
             <div className='relative isolate px-6 pt-14 lg:px-8'>
                 <div
                     className='absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80'
@@ -48,7 +48,12 @@ const Hero = () => {
                             >
                                 World cup fixtures
                             </Link> */}
-                            <Button handleClick={handleLogin}>Log in</Button>
+                            <Button
+                                handleClick={handleLogin}
+                                border='text-slate-50'
+                            >
+                                Log in
+                            </Button>
                             {/* <Link
                                 to='/list'
                                 className='text-sm font-semibold leading-6 text-gray-900'

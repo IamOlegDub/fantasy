@@ -3,8 +3,16 @@ import { getItemColor, getShortPosName, getTextColor } from '../../positions';
 import { addPlayer, removePlayer } from '../../slices/playersSlice';
 import ImageWithFallback from '../ImageWithFallback';
 import Button from '../Button/Button';
+import { Modal } from '../PlayerCard/PlayerCard';
+import { useState } from 'react';
 
 const PlayerListItem = ({ player }) => {
+    const [showModal, setShowModal] = useState(false);
+
+    const onShowModal = () => {
+        setShowModal(!showModal);
+    };
+
     const dispatch = useDispatch();
 
     const bgItemListColor = getItemColor(player.player_type);
@@ -27,6 +35,13 @@ const PlayerListItem = ({ player }) => {
         <div
             className={`flex flex-row p-1 items-center ${bgItemListColor} gap-1 relative rounded-md border min-h-item`}
         >
+            {showModal && (
+                <Modal
+                    showModal={showModal}
+                    onShowModal={onShowModal}
+                    player={player}
+                />
+            )}
             <div className='w-8 basis-1/12'>
                 <img src={player.team_badge} alt='logo' />
             </div>
@@ -42,7 +57,10 @@ const PlayerListItem = ({ player }) => {
                     alt=''
                 />
             </div>
-            <div className='font-medium basis-2/12 text-start text-xs'>
+            <div
+                onClick={onShowModal}
+                className='font-medium basis-2/12 text-start text-xs'
+            >
                 {player.player_name}
             </div>
             <div className='italic basis-1/12 text-xs'>

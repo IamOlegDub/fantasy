@@ -8,45 +8,20 @@ import {
     MF,
     MF_COLOR,
 } from '../../consts';
+import { formations } from '../../formations';
 import TeamPlayer from './TeamPlayer';
 
-const Team = ({ currentTeam }) => {
-    const form343 = {
-        goalkeeperPosition: [
-            'bottom-0 left-1/2 -translate-x-1/2',
-            '-bottom-24 left-0',
-        ],
-        defenderPositions: [
-            'bottom-24 left-1/4 -translate-x-1/2',
-            'bottom-24 left-2/4 -translate-x-1/2',
-            'bottom-24 left-3/4 -translate-x-1/2',
-            '-bottom-24 left-1/3 -translate-x-1/3',
-            '-bottom-24 left-2/3 -translate-x-2/4',
-        ],
-        midfielderPositions: [
-            'bottom-80 left-1/4 -translate-x-1/2',
-            'bottom-80 left-3/4 -translate-x-1/2',
-            'bottom-56 left-1/3 -translate-x-1/2',
-            'bottom-56 left-2/3 -translate-x-1/2',
-            '-bottom-24 right-0 translate-x-1/4',
-        ],
-        forwardPositions: [
-            'top-10 left-1/4 -translate-x-1/2',
-            'top-10 left-2/4 -translate-x-1/2',
-            'top-10 left-3/4 -translate-x-1/2',
-        ],
-    };
-
+const Team = ({ currentTeam, activeFormation }) => {
     const getPosition = (type, i) => {
         switch (type) {
             case GK:
-                return form343.goalkeeperPosition[i];
+                return activeFormation.goalkeeperPosition[i];
             case DF:
-                return form343.defenderPositions[i];
+                return activeFormation.defenderPositions[i];
             case MF:
-                return form343.midfielderPositions[i];
+                return activeFormation.midfielderPositions[i];
             case FW:
-                return form343.forwardPositions[i];
+                return activeFormation.forwardPositions[i];
             default:
                 return {};
         }
@@ -66,14 +41,14 @@ const Team = ({ currentTeam }) => {
     );
 
     return (
-        <div className='relative mx-auto'>
+        <div className='relative mx-auto text-xs'>
             <img className='mx-auto' src='imgs/Football_field.png' alt='' />
             {goalkeepers.map((player, i) => (
                 <TeamPlayer
                     player={player}
                     getPosition={getPosition}
                     i={i}
-                    borderColor={`border-2 border-${GK_COLOR}`}
+                    borderColor={`border-2 border-[#ff9f43]`}
                 />
             ))}
             {defenders.map((player, i) => (
@@ -81,7 +56,7 @@ const Team = ({ currentTeam }) => {
                     player={player}
                     getPosition={getPosition}
                     i={i}
-                    borderColor={`border-2 border-${DF_COLOR}`}
+                    borderColor={`border-2 border-[#74b9ff]`}
                 />
             ))}
             {midfielders.map((player, i) => (
@@ -89,7 +64,7 @@ const Team = ({ currentTeam }) => {
                     player={player}
                     getPosition={getPosition}
                     i={i}
-                    borderColor={`border-2 border-${MF_COLOR}`}
+                    borderColor={`border-2 border-[#55efc4]`}
                 />
             ))}
             {forwards.map((player, i) => (
@@ -97,7 +72,7 @@ const Team = ({ currentTeam }) => {
                     player={player}
                     getPosition={getPosition}
                     i={i}
-                    borderColor={`border-2 border-${FW_COLOR}`}
+                    borderColor={`border-2 border-[#ee5253]`}
                 />
             ))}
         </div>

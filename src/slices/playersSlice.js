@@ -13,7 +13,37 @@ const playersSlice = createSlice({
             const isPlayerAlreadySelected = state.selectedPlayers.some(
                 (player) => player.player_id === playerToAdd.id
             );
-            if (!isPlayerAlreadySelected) {
+            const gk = state.selectedPlayers.filter(
+                (player) => player.player_type === 'Goalkeepers'
+            );
+            const df = state.selectedPlayers.filter(
+                (player) => player.player_type === 'Defenders'
+            );
+            const mf = state.selectedPlayers.filter(
+                (player) => player.player_type === 'Midfielders'
+            );
+            const fw = state.selectedPlayers.filter(
+                (player) => player.player_type === 'Forwards'
+            );
+            if (!isPlayerAlreadySelected && state.selectedPlayers.length < 15) {
+                if (
+                    gk.length > 1 &&
+                    playerToAdd.player_type === 'Goalkeepers'
+                ) {
+                    return;
+                }
+                if (df.length > 4 && playerToAdd.player_type === 'Defenders') {
+                    return;
+                }
+                if (
+                    mf.length > 4 &&
+                    playerToAdd.player_type === 'Midfielders'
+                ) {
+                    return;
+                }
+                if (fw.length > 2 && playerToAdd.player_type === 'Forwards') {
+                    return;
+                }
                 state.selectedPlayers.push(playerToAdd);
             }
         },
